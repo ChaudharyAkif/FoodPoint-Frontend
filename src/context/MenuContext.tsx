@@ -20,7 +20,6 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const [products, setProducts] = useState<any[]>([]);
   const [deals, setDeals] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [, setInitialized] = useState<boolean>(false);
 
   const fetchData = useCallback(async (showLoader = false) => {
     const token = getToken();
@@ -33,21 +32,31 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
     try {
       if (showLoader) setLoading(true);
 
-      const prodRes = await axiosInstance.get('/products');
-      const dealRes = await axiosInstance.get('/deals');
-      console.log('dealRes', dealRes);
-      setProducts(prodRes.data);
-      setDeals(dealRes.data);
+      const [prodRes, dealRes] = await Promise.all([
+        axiosInstance.get('/products'),
+        axiosInstance.get('/deals'),
+      ]);
+
+      const prodData = Array.isArray(prodRes.data)
+        ? prodRes.data
+        : prodRes.data?.data ?? [];
+
+      const dealData = Array.isArray(dealRes.data)
+        ? dealRes.data
+        : dealRes.data?.data ?? [];
+
+      setProducts(prodData);
+      setDeals(dealData);
     } catch (error) {
       console.error('Error fetching menu data:', error);
     } finally {
       if (showLoader) setLoading(false);
-      setInitialized(true);
     }
   }, []);
 
   useEffect(() => {
     fetchData(true);
+
     const interval = setInterval(() => {
       fetchData(false);
     }, 5000);
@@ -55,7 +64,6 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
     return () => clearInterval(interval);
   }, [fetchData]);
 
-  // 🔹 Refresh without loading
   const refreshData = async () => {
     await fetchData(false);
   };
