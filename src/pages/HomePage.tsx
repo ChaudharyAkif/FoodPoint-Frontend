@@ -78,7 +78,7 @@ const HomePage = () => {
         axiosInstance.get('/products'),
       ]);
 
-      setDeals(dealsRes.data.filter((deal: any) => deal.status === 'active'));
+      setDeals(dealsRes?.data?.filter((deal: any) => deal.status === 'active'));
       setProducts(productsRes.data);
     } catch (error) {
       console.error('Error fetching data:', error);

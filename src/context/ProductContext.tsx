@@ -37,7 +37,7 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
     try {
       // Fetch deals
       const dealsRes = await axiosInstance.get('/deals');
-      setDeals(dealsRes.data.filter((deal: any) => deal.status === 'active'));
+      setDeals(dealsRes?.data?.filter((deal: any) => deal.status === 'active'));
     } catch (error) {
       console.error('Error fetching deals:', error);
     }
