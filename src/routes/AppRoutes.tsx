@@ -21,6 +21,7 @@ import { useAuth } from '../context/useAuthContext';
 import { MenuManagement } from '../views/MenuManagement';
 import AddProductForm from '../components/AddProducts/AddProductForm';
 import OrdersPage from '../pages/OrdersPage';
+import { EditItemPage } from '../views/EditItemPage';
 
 const AppRoutes = () => {
   const { role} = useAuth();
