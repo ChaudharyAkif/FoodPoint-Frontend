@@ -1,9 +1,11 @@
-import AppRoutes from './routes/AppRoutes';
-
-function App() {
+import './index.css'
+import AppRoutes from './routes/AppRoutes'
+const App = () => {
   return (
-      <AppRoutes />
-  );
+    <>
+     <AppRoutes />
+    </>
+  )
 }
 
-export default App;
+export default App

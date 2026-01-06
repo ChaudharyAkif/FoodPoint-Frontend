@@ -18,6 +18,7 @@ import { DynamicExtras } from './DynamicExtras';
 import { type Product, type DealAction } from '../../types';
 import axiosInstance from '../../api/axiosInstance';
 import axios from 'axios';
+import API from '../../api/API';
 
 interface FormValues {
   products: Product[];
@@ -151,7 +152,7 @@ const AddProductForm: React.FC = () => {
       }
 
       // Send via axios
-      await axios.post('http://localhost:2000/api/products/bulk-create', formData);
+      await API.post('/products/bulk-create', formData);
 
       setToast({ msg: 'Products saved successfully!', type: 'success' });
       reset();
