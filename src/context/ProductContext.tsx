@@ -34,7 +34,7 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const fetchData = async () => {
     setLoading(true);
 
-    console.log(axiosInstance)
+    console.log(axiosInstance.defaults.baseURL);
     try {
       // Fetch deals
       const dealsRes = await axiosInstance.get('/deals');
