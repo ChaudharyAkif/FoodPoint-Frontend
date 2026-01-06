@@ -13,13 +13,14 @@ import DashboardRoutes from '../pages/Dashboard/Routes';
 import Navbar from '../components/Header/Navbar';
 // import axiosInstance from '../api/axiosInstance';
 import HomePage from './../pages/HomePage';
-// import CartPage from '../pages/CartPage';
+import CartPage from '../pages/CartPage';
 import NotFound from '../pages/Frontend/NotFound';
 import AnalyticsDashboard from '../pages/Frontend/AnalyticsDashboard';
 import { MenuItemsPage } from '../views/MenuItemPage';
 import { useAuth } from '../context/useAuthContext';
-import OrdersPage from '../pages/Frontend/Orders';
 import { MenuManagement } from '../views/MenuManagement';
+import AddProductForm from '../components/AddProducts/AddProductForm';
+import OrdersPage from '../pages/OrdersPage';
 
 const AppRoutes = () => {
   const { role} = useAuth();
@@ -30,7 +31,7 @@ const AppRoutes = () => {
       <Routes>
         {/* === PUBLIC ROUTES (Everyone) === */}
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/cart" element={<CartPage />} /> */}
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/auth/*" element={<AuthRoutes />} />
 
         {/* === PROTECTED ROUTES === */}
@@ -46,34 +47,34 @@ const AppRoutes = () => {
         />
 
         {/* 2. MENU ITEMS: Super Admin & Cashier */}
-        {/* <Route
+        <Route
           path="/menu-items"
           element={
             <ProtectedRoute allowedRoles={['superadmin', 'cashier']}>
               <MenuItemsPage />
             </ProtectedRoute>
           }
-        /> */}
+        />
 
         {/* 3. EDIT ITEMS: Super Admin & Cashier */}
-        {/* <Route
+        <Route
           path="/edit-item/:id"
           element={
             <ProtectedRoute allowedRoles={['superadmin', 'cashier']}>
               <EditItemPage />
             </ProtectedRoute>
           }
-        /> */}
+        />
 
         {/* 4. ADD PRODUCTS: Super Admin ONLY */}
-        {/* <Route
+        <Route
           path="/add-products"
           element={
             <ProtectedRoute allowedRoles={['superadmin']}>
               <AddProductForm />
             </ProtectedRoute>
           }
-        /> */}
+        />
 
         {/* 5. MENU MANAGEMENT: Super Admin ONLY */}
         <Route
@@ -89,7 +90,7 @@ const AppRoutes = () => {
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
         <Route path="/analytic" element={<AnalyticsDashboard />} />
-        {/* <Route path='/orders' element={<OrdersPage/>}/> */}
+        <Route path='/orders' element={<OrdersPage/>}/>
       </Routes>
     </>
   );
