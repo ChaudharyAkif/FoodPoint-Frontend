@@ -4,9 +4,10 @@ import { getToken, clearAuthData } from "../context/AuthContext";
 // Create axios instance
 const axiosInstance = axios.create({
 
-  baseURL: import.meta.env.VITE_API_URL || "https://abcd-1234.ngrok-free.dev/api",
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:2000/api",
   headers: {
     "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true"
   }
 });
 
