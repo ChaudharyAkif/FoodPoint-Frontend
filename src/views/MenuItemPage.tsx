@@ -12,8 +12,8 @@ export const MenuItemsPage = () => {
   // Logic: Sort deals so the newest appear first
   const sortedDeals = useMemo(() => {
     // 5. UPDATED: Check if deals exist before sorting to prevent errors during initial load
-    if (!deals) return [];
-    
+    // if (!deals) return [];
+    if (!deals || !Array.isArray(deals)) return []
     return [...deals].sort((a: any, b: any) => {
       const dateA = new Date(a.createdAt || 0).getTime();
       const dateB = new Date(b.createdAt || 0).getTime();

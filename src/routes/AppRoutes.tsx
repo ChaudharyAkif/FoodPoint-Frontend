@@ -16,19 +16,20 @@ import HomePage from './../pages/HomePage';
 // import CartPage from '../pages/CartPage';
 import NotFound from '../pages/Frontend/NotFound';
 import AnalyticsDashboard from '../pages/Frontend/AnalyticsDashboard';
-// import { MenuItemsPage } from '../views/MenuItemPage';
+import { MenuItemsPage } from '../views/MenuItemPage';
 import { useAuth } from '../context/useAuthContext';
-// import OrdersPage from '../pages/Frontend/Orders';
+import OrdersPage from '../pages/Frontend/Orders';
+import { MenuManagement } from '../views/MenuManagement';
 
 const AppRoutes = () => {
   const { role} = useAuth();
   const showNavbar = role === 'cashier' || role === 'superadmin';
   return (
     <>
-      {/* {showNavbar && <Navbar />} */}
+      {showNavbar && <Navbar />}
       <Routes>
         {/* === PUBLIC ROUTES (Everyone) === */}
-        {/* <Route path="/" element={<HomePage />} /> */}
+        <Route path="/" element={<HomePage />} />
         {/* <Route path="/cart" element={<CartPage />} /> */}
         <Route path="/auth/*" element={<AuthRoutes />} />
 
@@ -75,14 +76,14 @@ const AppRoutes = () => {
         /> */}
 
         {/* 5. MENU MANAGEMENT: Super Admin ONLY */}
-        {/* <Route
+        <Route
           path="/menu-management"
           element={
             <ProtectedRoute allowedRoles={['superadmin']}>
               <MenuManagement />
             </ProtectedRoute>
           }
-        /> */}
+        />
         {/* <Route path="orders" element={<Cart />} /> */}
 
         {/* 404 */}
