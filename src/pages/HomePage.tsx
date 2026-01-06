@@ -71,22 +71,35 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const [dealsRes, productsRes] = await Promise.all([
-        axiosInstance.get('/deals'),
-        axiosInstance.get('/products'),
-      ]);
+const fetchData = async () => {
+  try {
+    const [dealsRes, productsRes] = await Promise.all([
+      axiosInstance.get('/deals'),
+      axiosInstance.get('/products'),
+    ]);
 
-      setDeals(dealsRes?.data?.filter((deal: any) => deal.status === 'active'));
-      setProducts(productsRes.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    // ✅ Safe filtering - agar data nahi hai to empty array
+    const dealsData = Array.isArray(dealsRes?.data) 
+      ? dealsRes.data.filter((deal: any) => deal.status === 'active')
+      : [];
+    
+    const productsData = Array.isArray(productsRes?.data) 
+      ? productsRes.data 
+      : [];
 
+    setDeals(dealsData);
+    setProducts(productsData);
+    
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    // ✅ Error pe bhi empty arrays set karenge
+    setDeals([]);
+    setProducts([]);
+  } finally {
+    // ✅ Loading false ho jayegi chahe kuch bhi ho
+    setLoading(false);
+  }
+};
   // --- NORMALIZE DATA ---
   const allItems: BaseItem[] = [
     ...deals.map((d) => ({

@@ -12,7 +12,7 @@ import { EditItemPage } from '../views/EditItemPage';
 // import type { Deal } from '../types';
 import Navbar from '../components/Header/Navbar';
 // import axiosInstance from '../api/axiosInstance';
-import HomePage from './../pages/HomePage';
+// import HomePage from './../pages/HomePage';
 import CartPage from '../pages/CartPage';
 import NotFound from '../pages/Frontend/NotFound';
 import AnalyticsDashboard from '../pages/Frontend/AnalyticsDashboard';
@@ -28,7 +28,7 @@ const AppRoutes = () => {
       {showNavbar && <Navbar />}
       <Routes>
         {/* === PUBLIC ROUTES (Everyone) === */}
-        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/cart" element={<CartPage />} />
         <Route path="/auth/*" element={<AuthRoutes />} />
 
