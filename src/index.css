@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Custom theme */
+@theme {
+  --color-primary: #E63946;
+  --color-secondary: #F4A261;
+  --color-accent: #2A9D8F;
+  --color-dark: #264653;
+  --color-light: #F8F9FA;
+  
+  --font-sans: 'Poppins', sans-serif;
+}
+
+
+.html2pdf__overlay,
+.html2pdf__container,
+iframe.html2canvas-container {
+  pointer-events: none !important;
+}
+
