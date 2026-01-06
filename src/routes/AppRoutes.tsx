@@ -25,10 +25,10 @@ const AppRoutes = () => {
   const showNavbar = role === 'cashier' || role === 'superadmin';
   return (
     <>
-      {showNavbar && <Navbar />}
+      {/* {showNavbar && <Navbar />} */}
       <Routes>
         {/* === PUBLIC ROUTES (Everyone) === */}
-        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
         {/* <Route path="/cart" element={<CartPage />} /> */}
         <Route path="/auth/*" element={<AuthRoutes />} />
 
