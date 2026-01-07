@@ -125,7 +125,7 @@ const Cashiers = () => {
               />
             </div>
             <button
-              onClick={() => navigate("/dashboard/superadmin/cashiers/add")}
+              onClick={() => navigate("/dashboard/superadmin/details")}
               className="px-6 py-3 bg-primary hover:bg-orange-600 text-white rounded-xl flex items-center gap-2"
             >
               <Plus size={20} />
