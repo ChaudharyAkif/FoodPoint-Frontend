@@ -78,20 +78,7 @@ const Navbar: React.FC = () => {
     );
   };
 
-  if (isLoading) {
-    return (
-      <nav className="bg-white border-b border-gray-200 w-full sticky top-0 z-50">
-        <div className="px-6 md:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-orange-500 p-1.5 rounded-md">
-              <UtensilsCrossed size={20} className="text-white" />
-            </div>
-            <span className="font-semibold text-gray-800 text-sm hidden sm:block">FoodPoint</span>
-          </div>
-        </div>
-      </nav>
-    );
-  }
+ 
 
   return (
     <nav className="bg-white border-b border-gray-200 w-full sticky top-0 z-50">
