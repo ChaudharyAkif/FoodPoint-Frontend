@@ -23,7 +23,7 @@ import API from '../../api/API';
 interface FormValues {
   products: Product[];
   dealAction: DealAction;
-  dealName?: string;
+  dealName: string;
 }
 
 const AddProductForm: React.FC = () => {
@@ -88,44 +88,10 @@ const AddProductForm: React.FC = () => {
   const watchDealAction = watch('dealAction');
   const watchAllProducts = watch('products');
 
-  // const onSubmit: SubmitHandler<FormValues> = async (data) => {
-  //   try {
-  //     const formData = new FormData();
-
-  //     watchAllProducts.forEach((p, idx) => {
-  //       const file = imageFiles[idx];
-  //       if (file) formData.append('images', file); // key must match multer.array('images')
-  //     });
-
-  //     formData.append(
-  //       'products',
-  //       JSON.stringify(
-  //         data.products.map((p) => ({
-  //           ...p,
-  //           image: '', // backend will attach Cloudinary URL
-  //         }))
-  //       )
-  //     );
-
-  //     formData.append('dealAction', data.dealAction);
-  //     if (data.dealName) formData.append('dealName', data.dealName);
-
-  //     // ✅ DO NOT set Content-Type
-  //     console.log(formData);
-  //     await axiosInstance.post('/products/bulk-create', formData);
-
-  //     setToast({ msg: 'Products saved successfully!', type: 'success' });
-  //     reset();
-  //     setImageFiles([]);
-  //   } catch (err) {
-  //     console.error(err);
-  //     setToast({ msg: 'Upload failed', type: 'error' });
-  //   }
-  // };
- const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const formData = new FormData();
-
+      console.log(formData);
       // Append real files for backend
       imageFiles.forEach((file) => {
         if (file) formData.append('images', file);
@@ -137,7 +103,7 @@ const AddProductForm: React.FC = () => {
         JSON.stringify(
           data.products.map((p) => ({
             ...p,
-            image: '', // backend sets Cloudinary URL
+            image: p.image, // backend sets Cloudinary URL
           }))
         )
       );
@@ -373,7 +339,7 @@ const AddProductForm: React.FC = () => {
                         <div className="flex-1 w-full space-y-3">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {/* Option A: Gallery Upload */}
-                            <label className="flex items-center justify-center gap-2 p-4 bg-white border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-primary hover:border-orange-500 transition-all group">
+                            <label className="flex cursor-pointer items-center justify-center gap-2 p-4 bg-white border-2 border-dashed border-gray-200 rounded-2xl cursor-pointe hover:border-orange-500 transition-all group">
                               <Plus
                                 size={18}
                                 className="text-gray-400 group-hover:text-orange-500"
@@ -462,7 +428,12 @@ const AddProductForm: React.FC = () => {
                   <div className="relative">
                     <Edit3 size={18} className="absolute left-4 top-5 text-black" />
                     <input
-                      {...register('dealName')}
+                      {...register('dealName', {
+                        validate: (value) =>
+                          watchDealAction !== 'new' || (value && value.trim().length > 0)
+                            ? true
+                            : 'Deal name is required',
+                      })}
                       placeholder="e.g. Weekend Special Combo"
                       className="w-full p-4 pl-12 bg-orange-50/50 border border-orange-100 rounded-2xl font-bold text-gray-700 outline-none focus:ring-2 focus:ring-[#ff5a00]/20"
                     />

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
 import {
   ChevronLeft,
   Plus,
@@ -50,7 +49,7 @@ interface EditItemForm {
     isVegan: boolean;
     isVegetarian: boolean;
   };
-  optionGroups: any[]; // Changed to handle incoming populated objects
+  optionGroups: any[];
   extras: string[];
 }
 
@@ -58,8 +57,11 @@ export const EditItemPage: React.FC = () => {
   const { refreshData } = useMenu();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
   const [isImageValid, setIsImageValid] = useState(true);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
   const [showGroupModal, setShowGroupModal] = useState(false);
   const [showOptionModal, setShowOptionModal] = useState(false);
   const [showCollectionPrice, setShowCollectionPrice] = useState<Record<number, boolean>>({});
@@ -85,13 +87,31 @@ export const EditItemPage: React.FC = () => {
     fields: variationFields,
     append: appendVar,
     remove: removeVar,
-  } = useFieldArray({ control, name: 'variations' });
+  } = useFieldArray({
+    control,
+    name: 'variations',
+  });
 
-  // Watch variables to resolve "never read" errors
   const variations = watch('variations') || [];
   const linkedGroupIds = watch('optionGroups') || [];
   const linkedExtras = watch('extras') || [];
   const currentImage = watch('image');
+
+  /* ================= CLOUDINARY UPLOAD ================= */
+  const uploadToCloudinary = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'YOUR_UPLOAD_PRESET'); // ← same as AddProductsForm
+
+    const res = await fetch('https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await res.json();
+    return data.secure_url;
+  };
+  /* ===================================================== */
 
   const fetchData = useCallback(async () => {
     try {
@@ -99,30 +119,21 @@ export const EditItemPage: React.FC = () => {
         axiosInstance.get(`/products/${id}`),
         axiosInstance.get(`/option-groups`),
         axiosInstance.get(`/options`),
-        axiosInstance.get(`/products`), // Get all to extract unique categories
+        axiosInstance.get(`/products`),
       ]);
 
-      // Set form data
       reset(productRes.data);
       setAvailableGroups(groupsRes.data);
       setAvailableOptions(optionsRes.data);
 
-      // 1. Extract categories safely from database
       const dbProducts = allProductsRes.data || [];
       const existingCats = dbProducts
         .map((p: any) => p.category)
         .filter((cat: string) => cat && cat.trim() !== '');
 
-      // 2. Define your master defaults
       const defaultCats = ['Starters', 'Italian', 'Fast Food', 'Chinese', 'Desi', 'Desserts'];
+      setCategories(Array.from(new Set([...defaultCats, ...existingCats])).sort());
 
-      // 3. Combine and remove duplicates using a Set
-      const finalUniqueCats = Array.from(new Set([...defaultCats, ...existingCats]));
-
-      // 4. Sort alphabetically for better UX
-      setCategories(finalUniqueCats.sort() as string[]);
-
-      // Handle variation visibility
       const visibility: Record<number, boolean> = {};
       (productRes.data.variations || []).forEach((v: Variation, i: number) => {
         if (v.collectionPrice && v.collectionPrice > 0) visibility[i] = true;
@@ -145,27 +156,36 @@ export const EditItemPage: React.FC = () => {
 
   const toggleGroupLink = (groupId: string) => {
     const currentIds = linkedGroupIds.map((g: any) => (typeof g === 'object' ? g._id : g));
-    const updated = currentIds.includes(groupId)
-      ? currentIds.filter((id: string) => id !== groupId)
-      : [...currentIds, groupId];
-    setValue('optionGroups', updated);
+    setValue(
+      'optionGroups',
+      currentIds.includes(groupId)
+        ? currentIds.filter((id: string) => id !== groupId)
+        : [...currentIds, groupId]
+    );
   };
 
   const toggleOptionLink = (optionName: string) => {
-    const updated = (linkedExtras || []).includes(optionName)
-      ? linkedExtras.filter((n) => n !== optionName)
-      : [...(linkedExtras || []), optionName];
-    setValue('extras', updated);
+    setValue(
+      'extras',
+      linkedExtras.includes(optionName)
+        ? linkedExtras.filter((n) => n !== optionName)
+        : [...linkedExtras, optionName]
+    );
   };
 
+  /* ====================== SUBMIT ====================== */
   const onSubmit = async (data: EditItemForm) => {
     try {
-      // FIX: Payload flattening to prevent 500 error
+      let imageUrl = data.image;
+
+      if (selectedFile) {
+        imageUrl = await uploadToCloudinary(selectedFile);
+      }
+
       const payload = {
         ...data,
-        optionGroups: data.optionGroups.map((group: any) =>
-          typeof group === 'object' ? group._id : group
-        ),
+        image: imageUrl,
+        optionGroups: data.optionGroups.map((g: any) => (typeof g === 'object' ? g._id : g)),
       };
 
       await axiosInstance.put(`/products/${id}`, payload);
@@ -176,6 +196,7 @@ export const EditItemPage: React.FC = () => {
       alert('error saving item');
     }
   };
+  /* =================================================== */
 
   if (loading)
     return <div className="p-20 text-center font-bold text-gray-400">syncing details...</div>;
@@ -330,7 +351,7 @@ export const EditItemPage: React.FC = () => {
                           setValue('image', '');
                           setIsImageValid(true);
                         }}
-                        className="absolute inset-0 bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2"
+                        className="cursor-pointer absolute inset-0 bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2"
                       >
                         <Trash2 size={24} />
                         <span className="text-[10px] font-black uppercase">Remove</span>
@@ -344,9 +365,9 @@ export const EditItemPage: React.FC = () => {
                   <div className="grid grid-cols-1 gap-3">
                     {/* Option A: Gallery Upload */}
                     <label className="flex items-center justify-center gap-3 p-5 bg-white border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-orange-50 hover:border-orange-500 transition-all group">
-                      <Plus size={20} className="text-gray-400 group-hover:text-orange-500" />
+                      <Plus size={20} className="text-gray-400 group-hover:text-primary" />
                       <div className="text-left">
-                        <p className="text-sm font-bold text-gray-700 group-hover:text-orange-500">
+                        <p className="text-sm font-bold text-gray-700 group-hover:text-primary">
                           Upload from Gallery
                         </p>
                         <p className="text-[10px] text-gray-400">PNG, JPG or GIF</p>
@@ -358,12 +379,9 @@ export const EditItemPage: React.FC = () => {
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) {
-                            const reader = new FileReader();
-                            reader.onloadend = () => {
-                              setValue('image', reader.result as string);
-                              setIsImageValid(true);
-                            };
-                            reader.readAsDataURL(file);
+                            setSelectedFile(file);
+                            setValue('image', URL.createObjectURL(file)); // preview
+                            setIsImageValid(true);
                           }
                         }}
                       />
@@ -423,7 +441,6 @@ export const EditItemPage: React.FC = () => {
               />
             </div>
           </section>
-
 
           {/* Section 2: Variations Input */}
           <section className="space-y-8">

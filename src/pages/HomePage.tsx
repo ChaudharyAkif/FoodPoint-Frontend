@@ -726,7 +726,7 @@ const HomePage = () => {
           </motion.div>
 
           {/* Enhanced Filters & Search - Responsive */}
-          <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-lg md:shadow-xl mb-8 md:mb-12 border border-gray-100">
+          <div className="bg-white p-4 md:p-6 lg:p-8 shadow-lg md:shadow-xl mb-8 md:mb-12 border border-gray-100">
             <div className="flex flex-col lg:flex-row gap-4 md:gap-6 items-center justify-between mb-4 md:mb-6">
               {/* Enhanced Search - Responsive */}
               <div className="relative w-full lg:w-auto lg:flex-1 max-w-2xl">
@@ -736,7 +736,7 @@ const HomePage = () => {
                   placeholder="Search deals or items..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 md:pl-14 pr-6 py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-gray-200 focus:border-red-500 focus:ring-2 md:focus:ring-4 focus:ring-red-100 outline-none transition-all text-base md:text-lg"
+                  className="w-full pl-10 md:pl-14 pr-6 py-3 md:py-4 rounded-xl md:rounded-xl border-2 border-gray-200 focus:border-red-500 focus:ring-2 md:focus:ring-4 focus:ring-red-100 outline-none transition-all text-xs md:text-sm"
                 />
                 <div className="absolute right-4 top-1/2 -translate-y-1/2">
                   <div className="text-xs md:text-sm text-gray-400">
