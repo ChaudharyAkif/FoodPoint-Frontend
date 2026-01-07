@@ -23,9 +23,12 @@ import {
   Gift,
   TrendingUp,
   X,
+  Sparkles,
+  Eye,
 } from 'lucide-react';
 import axiosInstance from '../api/axiosInstance';
 import { useCart } from '../context/CartContext';
+import { TypeAnimation } from 'react-type-animation';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/useAuthContext';
@@ -429,6 +432,7 @@ const HomePage = () => {
       </motion.section>
 
       {/* Enhanced Deal Slider Section - Responsive */}
+      {/* Enhanced Deal Slider Section - Responsive */}
       {deals.length > 0 && (
         <section className="py-12 md:py-24 bg-linear-to-b from-white to-gray-50/50">
           <div className="container mx-auto px-4">
@@ -445,15 +449,20 @@ const HomePage = () => {
                 </span>
               </div>
               <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
-                {' '}
-                <span className="bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">
-                  Mega Deals
-                </span>{' '}
+                <TypeAnimation
+                  sequence={[
+                    'Mega Deals', // Text to type
+                    2000, // Wait 2s
+                    '', // Optional: delete text
+                    1000, // Wait 1s
+                  ]}
+                  speed={50} // Typing speed (ms)
+                  className="bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent"
+                  wrapper="span"
+                  repeat={Infinity} // Loop the animation
+                />{' '}
                 of the Week
               </h2>
-              <p className="text-gray-600 text-base md:text-xl max-w-2xl mx-auto">
-                Exclusive offers you won't find anywhere else. Grab them before they're gone!
-              </p>
             </motion.div>
 
             <div className="relative">
@@ -628,7 +637,7 @@ const HomePage = () => {
       )}
 
       {/* Enhanced Features Section - Responsive */}
-      <section className="py-12 md:py-24 bg-linear-to-b from-gray-50/50 to-white">
+      <section className="py-8 md:py-7 bg-linear-to-b from-gray-50/50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -636,11 +645,20 @@ const HomePage = () => {
             viewport={{ once: true, margin: '-50px' }}
             className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 md:mb-8 leading-snug">
               Why Choose{' '}
-              <span className="bg-linear-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                FoodPoint
-              </span>
+              <TypeAnimation
+                sequence={[
+                  'FoodPoint', // Text to type
+                  2000, // Wait 2s
+                  '', // Optional: delete text
+                  1000, // Wait 1s before typing again
+                ]}
+                speed={50} // Typing speed
+                className="bg-gradient-to-r from-red-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent"
+                wrapper="span"
+                repeat={Infinity} // Loop the animation
+              />
             </h2>
             <p className="text-gray-600 text-base md:text-xl max-w-2xl mx-auto">
               We're committed to delivering more than just food - we deliver experiences
@@ -690,12 +708,18 @@ const HomePage = () => {
                 Our Selection
               </span>
             </div>
+
             <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
               Discover Our{' '}
-              <span className="bg-linear-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                Menu
-              </span>
+              <TypeAnimation
+                sequence={['Menu']} // Type "Menu" once
+                speed={70} // Smooth typing speed
+                wrapper="span"
+                className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent"
+                repeat={0} // Do not loop
+              />
             </h2>
+
             <p className="text-gray-600 text-base md:text-xl max-w-2xl mx-auto">
               Browse our full range of products & exclusive deals
             </p>
