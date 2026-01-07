@@ -5,7 +5,7 @@ import { UtensilsCrossed, Menu, X, LogOut, ShoppingCart } from 'lucide-react';
 import { checkRoleApi } from '../../api/auth.api';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext'; // Import useCart
-
+import logo from "../../assets/logo.png"
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState<string | null>(null);
@@ -82,13 +82,14 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="bg-white border-b border-gray-200 w-full sticky top-0 z-50">
+      
       <div className="px-6 md:px-8 h-16 flex items-center justify-between">
         {/* LEFT: Logo + Links */}
         <div className="flex items-center gap-8 h-full">
           {/* Logo */}
           <div className="flex items-center ">
             {/* <div className="bg-primary p-1.5 rounded-md"> */}
-              <img src="/src/assets/logo.png" alt="Logo" className="w-12 h-10" />
+              <img src={logo} alt="Logo" className="w-12 h-10" />
               {/* <UtensilsCrossed size={20} className="text-white" /> */}
             {/* </div> */}
             <span className="font-semibold text-primary text-sm hidden sm:block mt-1">FoodPoint</span>
