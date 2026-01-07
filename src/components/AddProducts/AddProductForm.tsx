@@ -332,7 +332,7 @@ const AddProductForm: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => setShowCatModal(true)}
-                            className="cursor-pointer w-10 h-14 flex items-center justify-center bg-orange-500 text-white rounded-2xl hover:bg-black active:scale-95 transition-all shrink-0 shadow-lg"
+                            className="cursor-pointer w-10 h-14 flex items-center justify-center bg-primary text-white rounded-2xl hover:bg-black active:scale-95 transition-all shrink-0 shadow-lg"
                           >
                             <Plus size={16} />
                           </button>
@@ -373,7 +373,7 @@ const AddProductForm: React.FC = () => {
                         <div className="flex-1 w-full space-y-3">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {/* Option A: Gallery Upload */}
-                            <label className="flex items-center justify-center gap-2 p-4 bg-white border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-orange-50 hover:border-orange-500 transition-all group">
+                            <label className="flex items-center justify-center gap-2 p-4 bg-white border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-primary hover:border-orange-500 transition-all group">
                               <Plus
                                 size={18}
                                 className="text-gray-400 group-hover:text-orange-500"
@@ -473,7 +473,7 @@ const AddProductForm: React.FC = () => {
               <div className="flex items-end">
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-3 w-full md:w-64 bg-[#ff5a00] text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all text-sm tracking-widest hover:bg-[#e65100]"
+                  className="flex items-center justify-center gap-3 w-full md:w-64 bg-primary text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all text-sm tracking-widest hover:bg-[#e65100]"
                 >
                   <ShoppingBag size={22} /> Save All Items
                 </button>

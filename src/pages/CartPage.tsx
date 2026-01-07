@@ -261,7 +261,7 @@ const handleCheckout = async () => {
           </div>
           <div className="flex items-center gap-2">
             <button onClick={() => setShowDeleteConfirm(true)} className="p-2 text-gray-400 hover:text-red-500 transition-colors"><Trash2 className="w-5 h-5" /></button>
-            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">{cart.items.reduce((sum, item) => sum + item.quantity, 0)}</div>
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold">{cart.items.reduce((sum, item) => sum + item.quantity, 0)}</div>
           </div>
         </div>
 
@@ -269,8 +269,8 @@ const handleCheckout = async () => {
         <div className="flex items-center justify-between mb-8 max-w-2xl mx-auto">
           {['Cart', 'Details', 'Payment', 'Confirm'].map((step, index) => (
             <div key={step} className="flex flex-col items-center">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${index === 0 ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-500'}`}>{index + 1}</div>
-              <span className={`text-sm font-medium ${index === 0 ? 'text-orange-600' : 'text-gray-500'}`}>{step}</span>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${index === 0 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-500'}`}>{index + 1}</div>
+              <span className={`text-sm font-medium ${index === 0 ? 'text-primary' : 'text-gray-500'}`}>{step}</span>
             </div>
           ))}
         </div>
@@ -284,7 +284,7 @@ const handleCheckout = async () => {
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="bg-white rounded-2xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2"><ShoppingBag className="w-5 h-5" /> Order Items</h2>
-                <button onClick={() => setActiveTab(activeTab === 'summary' ? 'details' : 'summary')} className="text-sm text-orange-500 font-medium">{activeTab === 'summary' ? 'Show Details' : 'Show Summary'}</button>
+                <button onClick={() => setActiveTab(activeTab === 'summary' ? 'details' : 'summary')} className="text-sm text-primary font-medium">{activeTab === 'summary' ? 'Show Details' : 'Show Summary'}</button>
               </div>
               <AnimatePresence>
                 {cart.items.map((item) => (
@@ -293,7 +293,7 @@ const handleCheckout = async () => {
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         <div><h4 className="font-bold text-gray-900">{item.name}</h4><p className="text-sm text-gray-500">{item.type === 'deal' ? 'Special Deal' : 'Menu Item'}</p></div>
-                        <div className="text-right"><div className="font-bold text-orange-500 text-lg">${(item.price * item.quantity).toFixed(2)}</div><div className="text-sm text-gray-500">${item.price} each</div></div>
+                        <div className="text-right"><div className="font-bold text-primary text-lg">€{(item.price * item.quantity).toFixed(2)}</div><div className="text-sm text-gray-500">€{item.price} each</div></div>
                       </div>
                       <div className="flex items-center justify-between mt-4">
                         <div className="flex items-center gap-2">
@@ -330,7 +330,7 @@ const handleCheckout = async () => {
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl shadow-lg p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"><CreditCard className="w-5 h-5" /> Payment Method</h3>
-              <div className="p-4 rounded-xl border-2 border-orange-500 bg-orange-50"><div className="flex items-center gap-3"><div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center"><span className="text-white text-xl">💵</span></div><div><div className="font-bold text-lg">Cash on Delivery</div><div className="text-sm text-gray-600">Pay on arrival</div></div></div></div>
+              <div className="p-4 rounded-xl border-2 border-primary bg-orange-50"><div className="flex items-center gap-3"><div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center"><span className="text-white text-xl">💵</span></div><div><div className="font-bold text-lg">Cash on Delivery</div><div className="text-sm text-gray-600">Pay on arrival</div></div></div></div>
             </motion.div>
           </div>
 
@@ -338,12 +338,12 @@ const handleCheckout = async () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-white rounded-2xl shadow-lg p-6 sticky top-6">
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"><ReceiptText className="w-5 h-5" /> Order Summary</h3>
               <div className="space-y-4 mb-6">
-                <div className="flex justify-between text-sm text-gray-600"><span>Items</span><span>${subtotal.toFixed(2)}</span></div>
-                <div className="flex justify-between"><span>Delivery</span><span>${deliveryFee.toFixed(2)}</span></div>
-                <div className="flex justify-between"><span>Tax</span><span>${tax.toFixed(2)}</span></div>
-                <div className="border-t pt-4 flex justify-between text-lg font-bold"><span>Total</span><span className="text-orange-500">${total.toFixed(2)}</span></div>
+                <div className="flex justify-between text-sm text-gray-600"><span>Items</span><span>€{subtotal.toFixed(2)}</span></div>
+                <div className="flex justify-between"><span>Delivery</span><span>€{deliveryFee.toFixed(2)}</span></div>
+                <div className="flex justify-between"><span>Tax</span><span>€{tax.toFixed(2)}</span></div>
+                <div className="border-t pt-4 flex justify-between text-lg font-bold"><span>Total</span><span className="text-primary">€{total.toFixed(2)}</span></div>
               </div>
-              <button onClick={handleCheckout} disabled={checkoutLoading} className={`w-full py-4 rounded-xl font-bold text-lg text-white shadow-lg ${checkoutLoading ? 'bg-gray-300' : 'bg-linear-to-r from-orange-500 to-red-500'}`}>{checkoutLoading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : `Place Order • $${total.toFixed(2)}`}</button>
+              <button onClick={handleCheckout} disabled={checkoutLoading} className={`w-full py-4 rounded-xl font-bold text-lg text-white shadow-lg ${checkoutLoading ? 'bg-gray-300' : 'bg-linear-to-r from-primary to-red-400'}`}>{checkoutLoading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : `Place Order • €${total.toFixed(2)}`}</button>
             </motion.div>
           </div>
         </div>

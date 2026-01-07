@@ -141,7 +141,7 @@ export const DealGallery: React.FC<DealGalleryProps> = ({ deals, onRefresh }) =>
                   <span
                     className={`px-3 py-1 text-[10px] font-black rounded-full tracking-wider ${
                       deal.status === 'active'
-                        ? 'bg-[#fff3ed] text-[#ff772e]'
+                        ? 'bg-[#fff3ed] text-primary'
                         : 'bg-gray-200 text-gray-500'
                     }`}
                   >
@@ -151,7 +151,7 @@ export const DealGallery: React.FC<DealGalleryProps> = ({ deals, onRefresh }) =>
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => toggleStatus(deal._id!, deal.status || 'active')}
-                      className="cursor-pointer p-2 text-gray-400 hover:text-[#ff772e] hover:bg-indigo-50 rounded-xl transition-all"
+                      className="cursor-pointer p-2 text-gray-400 hover:text-primary hover:bg-indigo-50 rounded-xl transition-all"
                     >
                       {deal.status === 'active' ? <Eye size={18} /> : <EyeOff size={18} />}
                     </button>
@@ -192,10 +192,10 @@ export const DealGallery: React.FC<DealGalleryProps> = ({ deals, onRefresh }) =>
                   <div className="flex items-center gap-1.5 mt-1">
                     <Banknote
                       size={12}
-                      className={price > 0 ? 'text-emerald-500' : 'text-rose-400'}
+                      className={price > 0 ? 'text-emerald-500' : 'text-primary'}
                     />
                     <span
-                      className={`text-xs font-black ${price > 0 ? 'text-gray-900' : 'text-rose-500'}`}
+                      className={`text-xs font-black ${price > 0 ? 'text-gray-900' : 'text-primary'}`}
                     >
                       {price > 0 ? `$${price.toFixed(2)}` : price}
                     </span>
@@ -212,14 +212,14 @@ export const DealGallery: React.FC<DealGalleryProps> = ({ deals, onRefresh }) =>
                         key={idx}
                         className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border font-medium text-xs transition-colors ${
                           deal.status === 'active'
-                            ? 'bg-[#fefbf8] text-[#ff8a4a] border-[#fbe7dc]'
+                            ? 'bg-[#fefbf8] text-primary border-[#fbe7dc]'
                             : 'bg-gray-100 text-gray-400 border-gray-200'
                         }`}
                       >
                         <span>{product.productName || 'Product Deleted'}</span>
                         <div className="flex gap-1">
                           {product.dietaryInfo?.isSpicy && (
-                            <Flame size={10} className="text-orange-500" />
+                            <Flame size={10} className="text-primary" />
                           )}
                           {product.dietaryInfo?.isVegan && (
                             <Leaf size={10} className="text-emerald-500" />

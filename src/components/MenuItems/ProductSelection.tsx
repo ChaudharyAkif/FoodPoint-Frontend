@@ -103,7 +103,7 @@ console.log("products",products)
     <div className="relative">
       {toast && (
         <div
-          className={`fixed bottom-5 right-5 flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl text-white z-50 animate-in fade-in slide-in-from-bottom-4 ${toast.type === 'success' ? 'bg-emerald-600' : 'bg-rose-600'}`}
+          className={`fixed bottom-5 right-5 flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl text-white z-50 animate-in fade-in slide-in-from-bottom-4 ${toast.type === 'success' ? 'bg-emerald-600' : 'bg-primary'}`}
         >
           {toast.type === 'success' ? <CheckCircle size={20} /> : <XCircle size={20} />}
           <span className="font-bold">{toast.msg}</span>
@@ -172,7 +172,7 @@ console.log("products",products)
               <button
                 type="button"
                 onClick={handleCreateDeal}
-                className="flex-1 py-4 bg-[#ff5a00] text-white rounded-2xl font-black shadow-lg hover:bg-[#e65100] active:scale-95 transition-all uppercase text-xs tracking-widest"
+                className="flex-1 py-4 bg-primary text-white rounded-2xl font-black shadow-lg hover:bg-[#e65100] active:scale-95 transition-all uppercase text-xs tracking-widest"
               >
                 save deal
               </button>
@@ -277,7 +277,7 @@ console.log("products",products)
                         </p>
                         <div className="flex gap-1.5 ml-2">
                           {product.dietaryInfo?.isSpicy && (
-                            <Flame size={14} className="text-orange-500" />
+                            <Flame size={14} className="text-primary" />
                           )}
                           {product.dietaryInfo?.isVegan && (
                             <Leaf size={14} className="text-emerald-500" />
@@ -287,7 +287,7 @@ console.log("products",products)
                           )}
                         </div>
                         {isOutOfStock && (
-                          <span className="flex items-center gap-1 text-[9px] font-black text-rose-500 bg-rose-50 px-2 py-0.5 rounded-full uppercase">
+                          <span className="flex items-center gap-1 text-[9px] font-black text-primary bg-rose-50 px-2 py-0.5 rounded-full uppercase">
                             <AlertCircle size={10} /> out of stock
                           </span>
                         )}
@@ -307,7 +307,7 @@ console.log("products",products)
                       <button
                         type="button"
                         onClick={() => navigate(`/edit-item/${product._id}`)}
-                        className="p-3 text-gray-300 hover:text-[#ff5a00] hover:bg-orange-50 rounded-xl transition-all cursor-pointer opacity-0 group-hover:opacity-100"
+                        className="p-3 text-gray-300 hover:text-primary hover:bg-orange-50 rounded-xl transition-all cursor-pointer opacity-0 group-hover:opacity-100"
                       >
                         <Pencil size={18} />
                       </button>
@@ -322,7 +322,7 @@ console.log("products",products)
         <button
           type="button"
           onClick={() => setShowModal(true)}
-          className="cursor-pointer w-full mt-8 bg-[#ff5a00] hover:bg-[#e65100] text-white font-black py-5 rounded-[1.5rem] shadow-xl shadow-orange-100 transition-all disabled:opacity-50 disabled:grayscale active:scale-95 uppercase tracking-widest text-sm"
+          className="cursor-pointer w-full mt-8 bg-primary hover:bg-[#e65100] text-white font-black py-5 rounded-[1.5rem] shadow-xl shadow-orange-100 transition-all disabled:opacity-50 disabled:grayscale active:scale-95 uppercase tracking-widest text-sm"
           disabled={selectedIds.length === 0}
         >
           create new deal ({selectedIds.length} items selected)

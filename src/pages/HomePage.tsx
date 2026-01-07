@@ -5,8 +5,6 @@ import {
   Clock,
   Shield,
   Star,
-  ArrowRight,
-  Sparkles,
   ShoppingCart,
   ChevronLeft,
   ChevronRight,
@@ -31,6 +29,9 @@ import { useCart } from '../context/CartContext';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/useAuthContext';
+import HeroBanner from './CardDesign';
+
+import Logo from '../assets/fpt-logo.png';
 
 // Define strict interfaces to prevent TypeErrors
 interface BaseItem {
@@ -380,6 +381,8 @@ const fetchData = async () => {
         )}
       </AnimatePresence>
 
+      <HeroBanner />
+
       {/* Enhanced Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -413,90 +416,6 @@ const fetchData = async () => {
             className="absolute bottom-1/4 right-1/4 w-56 h-56 md:w-80 md:h-80 bg-amber-300/10 rounded-full blur-3xl"
           />
         </div>
-
-        <div className="relative container mx-auto px-4 py-16 md:py-32">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-lg rounded-full px-4 py-2 md:px-6 md:py-3 mb-6 md:mb-8 mx-auto"
-            >
-              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-yellow-300" />
-              <span className="text-xs md:text-sm font-bold text-white tracking-wider">
-                🔥 #1 RATED FOOD DELIVERY
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight tracking-tight"
-            >
-              Taste The{' '}
-              <span className="bg-linear-to-r from-yellow-300 via-yellow-200 to-white bg-clip-text text-transparent">
-                Joy
-              </span>
-              <br />
-              Of Every{' '}
-              <span className="bg-linear-to-r from-amber-200 to-white bg-clip-text text-transparent">
-                Bite
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-base md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed"
-            >
-              Experience gourmet meals delivered to your doorstep. From sizzling deals to premium
-              quality, we bring restaurant excellence to your home.
-            </motion.p>
-
-            {/* Hero Stats - Responsive */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-12"
-            >
-              {heroStats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-3 md:p-4 text-center border border-white/20"
-                >
-                  <div className="flex items-center justify-center gap-1 md:gap-2 mb-1 md:mb-2">
-                    {stat.icon}
-                    <div className="text-xl md:text-3xl font-bold text-white">{stat.value}</div>
-                  </div>
-                  <div className="text-white/80 text-xs md:text-sm font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
-            >
-              <button
-                onClick={() => {
-                  const menuSection = document.getElementById('menu-section');
-                  menuSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="group relative bg-white text-red-600 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-base md:text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 shadow-xl"
-              >
-                <span className="flex items-center justify-center gap-2 md:gap-3">
-                  Order Now
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform" />
-                </span>
-                <div className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </button>
-            </motion.div>
-          </div>
-        </div>
       </motion.section>
 
       {/* Enhanced Deal Slider Section - Responsive */}
@@ -516,7 +435,7 @@ const fetchData = async () => {
                 </span>
               </div>
               <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
-                🔥{' '}
+                {' '}
                 <span className="bg-linear-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">
                   Mega Deals
                 </span>{' '}
@@ -528,7 +447,7 @@ const fetchData = async () => {
             </motion.div>
 
             <div className="relative">
-              <div className="overflow-hidden rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl shadow-red-500/20">
+              <div className="overflow-hidden shadow-xl md:shadow-2xl shadow-red-500/20">
                 <div className="relative h-80 md:h-125 lg:h-150">
                   <AnimatePresence mode="wait">
                     {deals.map(
@@ -570,7 +489,7 @@ const fetchData = async () => {
                                       initial={{ opacity: 0, y: 20 }}
                                       animate={{ opacity: 1, y: 0 }}
                                       transition={{ delay: 0.3 }}
-                                      className="text-2xl md:text-4xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight"
+                                      className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight"
                                     >
                                       {deal.dealName}
                                     </motion.h2>
@@ -582,15 +501,15 @@ const fetchData = async () => {
                                       className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 mb-6 md:mb-8"
                                     >
                                       <div className="flex flex-col">
-                                        <span className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
-                                          ${deal.price}
+                                        <span className="text-3xl md:text-5xl lg:text-6xl font-bold text-white">
+                                          €{deal.price}
                                         </span>
                                         <span className="text-white/70 line-through text-xl md:text-3xl">
-                                          ${(deal.price * 1.5).toFixed(2)}
+                                          €{(deal.price * 1.5).toFixed(2)}
                                         </span>
                                       </div>
                                       <div className="bg-white text-red-600 px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-base md:text-lg shadow-xl">
-                                        Save ${(deal.price * 0.5).toFixed(2)}!
+                                        Save €{(deal.price * 0.5).toFixed(2)}!
                                       </div>
                                     </motion.div>
 
@@ -632,38 +551,44 @@ const fetchData = async () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Enhanced Slider Controls - Responsive */}
-                <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex items-center gap-3 md:gap-4">
+                {/* Enhanced Slider Controls - Responsive Option 2 */}
+                <div className="absolute inset-x-0 bottom-4 md:bottom-8 px-4 md:px-0 z-30 flex items-center justify-between md:justify-center md:gap-6">
+                  {/* Left Arrow - Positioned left on mobile, centered-gap on desktop */}
                   <button
                     onClick={prevSlide}
                     onMouseEnter={() => setIsAutoScrolling(false)}
                     onMouseLeave={() => setIsAutoScrolling(true)}
-                    className="bg-white/20 hover:bg-white/30 backdrop-blur-lg w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/30"
+                    className="bg-black/20 md:bg-white/20 hover:bg-white/30 backdrop-blur-md w-4 h-4 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/30 shadow-lg"
+                    aria-label="Previous slide"
                   >
                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </button>
 
-                  <div className="flex gap-1 md:gap-2">
+                  {/* Slide Indicators - Hidden on small screens, flex on md and up */}
+                  <div className="hidden md:flex items-center gap-2 px-2">
                     {deals.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentDealIndex(index)}
                         onMouseEnter={() => setIsAutoScrolling(false)}
                         onMouseLeave={() => setIsAutoScrolling(true)}
-                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
                           index === currentDealIndex
-                            ? 'bg-white md:w-8 shadow-lg'
-                            : 'bg-white/50 hover:bg-white/70 hover:w-3 md:hover:w-4'
+                            ? 'bg-white w-8 shadow-md'
+                            : 'bg-white/40 hover:bg-white/60 w-2.5'
                         }`}
+                        aria-label={`Go to slide ${index + 1}`}
                       />
                     ))}
                   </div>
 
+                  {/* Right Arrow - Positioned right on mobile, centered-gap on desktop */}
                   <button
                     onClick={nextSlide}
                     onMouseEnter={() => setIsAutoScrolling(false)}
                     onMouseLeave={() => setIsAutoScrolling(true)}
-                    className="bg-white/20 hover:bg-white/30 backdrop-blur-lg w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/30"
+                    className="bg-black/20 md:bg-white/20 hover:bg-white/30 backdrop-blur-md w-4 h-4 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/30 shadow-lg"
+                    aria-label="Next slide"
                   >
                     <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
                   </button>
@@ -849,20 +774,16 @@ const fetchData = async () => {
                   }`}
                 >
                   {category === 'all' ? 'All Items' : category}
-                  {category === 'Deals' && (
-                    <span className="ml-1 md:ml-2 bg-yellow-500 text-black text-xs px-1 md:px-2 py-0.5 rounded-full">
-                      🔥
-                    </span>
-                  )}
+                  {category === 'Deals'}
                 </button>
               ))}
             </div>
 
             {/* Cart Count Indicator */}
-            <div className="mt-4 md:mt-6 flex justify-center">
-              <div className="inline-flex items-center gap-2 md:gap-3 bg-linear-to-r from-red-50 to-orange-50 px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl border border-red-200">
-                <ShoppingCart classN ame="w-4 h-4 md:w-5 md:h-5 text-red-600" />
-                <span className="text-red-700 text-sm md:text-base font-semibold">
+            <div className="mt-4 md:mt-6 flex justify-center border-t border-gray-200">
+              <div className="inline-flex items-center gap-2 mt-2 md:gap-2 px-4 py-2 md:px-6 md:py-3">
+                <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                <span className="text-primary text-sm md:text-base font-semibold">
                   {getCartCount()} item{getCartCount() !== 1 ? 's' : ''} in cart
                 </span>
               </div>
@@ -892,9 +813,9 @@ const fetchData = async () => {
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     viewport={{ once: true, margin: '-50px' }}
                     whileHover={{ y: -6, scale: 1.02 }}
-                    className="group bg-white rounded-2xl md:rounded-3xl shadow-lg hover:shadow-xl md:hover:shadow-2xl transition-all duration-300 flex flex-col h-full border-2 border-transparent hover:border-red-200 overflow-hidden"
+                    className="group bg-white rounded-2xl md:rounded-2xl shadow-lg hover:shadow-xl md:hover:shadow-2xl transition-all duration-300 flex flex-col h-full border-2 border-transparent hover:border-red-200 overflow-hidden"
                   >
-                    <div className="relative h-48 md:h-56 overflow-hidden shrink-0">
+                    <div className="relative h-48 md:h-46 overflow-hidden shrink-0">
                       <img
                         src={
                           item.image ||
@@ -904,8 +825,8 @@ const fetchData = async () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       {/* Price Tag */}
-                      <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-linear-to-r from-red-500 to-orange-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-xl md:rounded-2xl text-sm md:text-base font-bold shadow-lg">
-                        ${item.price}
+                      <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-linear-to-r from-primary to-orange-400 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-xl md:rounded-2xl text-xs md:text-sm font-bold shadow-lg">
+                        € {item.price}
                       </div>
                       {/* Deal Tag */}
                       {item.type === 'deal' && (
@@ -955,10 +876,18 @@ const fetchData = async () => {
                         </div>
                         <button
                           onClick={() => handleAddToCart(item)}
-                          className="group/btn bg-linear-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl font-semibold flex items-center gap-1 md:gap-2 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                          className="group/btn relative flex items-center gap-2 bg-primary hover:bg-orange-600 text-white px-4 py-1.5 md:px-5 md:py-2 rounded-2xl transition-all duration-300 active:scale-95 shadow-md hover:shadow-orange-500/30 overflow-hidden"
                         >
-                          <ShoppingCart className="w-4 h-4 md:w-5 md:h-5 group-hover/btn:scale-110 transition-transform" />
-                          <span className="text-sm md:text-base">Add to Cart</span>
+                          {/* Subtle shine sweep on hover */}
+                          <div className="absolute inset-0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                          <div className="relative z-10">
+                            <ShoppingCart className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
+                          </div>
+
+                          <span className="relative z-10 text-[11px] md:text-xs font-bold uppercase tracking-wider">
+                            Add to Cart
+                          </span>
                         </button>
                       </div>
                     </div>
@@ -1000,7 +929,7 @@ const fetchData = async () => {
       </section>
 
       {/* Enhanced Customer Reviews Section - Responsive */}
-      <section className="py-12 md:py-24 bg-linear-to-b from-gray-50 to-white">
+      <section className="py-8 md:py-14 bg-linear-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1141,29 +1070,26 @@ const fetchData = async () => {
         </div>
       </section>
 
-      {/* Enhanced CTA Section - Responsive */}
-     
-
       {/* Enhanced Footer - Responsive */}
-      <footer className="bg-gray-900 text-white py-12 md:py-16">
+      <footer className="text-white py-8 md:py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-4 md:mb-6">
-              <div className="bg-linear-to-r from-red-500 to-orange-500 p-2 md:p-3 rounded-xl md:rounded-2xl">
-                <Sparkles className="w-5 h-5 md:w-8 md:h-8" />
+              <div className="p-1 md:p-2 rounded-xl md:rounded-2xl">
+                <img className="h-10 w-10" src={Logo} alt="FTP Logo" />
               </div>
-              <h2 className="text-xl md:text-3xl font-bold">FoodPoint</h2>
+              <h2 className="text-xl md:text-3xl font-bold text-black">FoodPoint</h2>
             </div>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-lg">
-              Delivering happiness and delicious meals to your doorstep since 2023
+            <p className="text-gray-700 max-w-2xl mx-auto text-sm md:text-lg">
+              Delivering happiness and delicious meals to your doorstep since 2026
             </p>
           </div>
 
-          <div className="border-t border-gray-800 pt-8 md:pt-12 text-center text-gray-400">
-            <p className="mb-3 md:mb-4 text-sm md:text-base">
+          <div className="border-t border-gray-800 pt-8 md:pt-12 text-center text-gray-500">
+            <p className="mb-3 md:mb-2 text-sm md:text-base">
               &copy; {new Date().getFullYear()} FoodPoint. All rights reserved.
             </p>
-            <p className="text-xs md:text-sm text-gray-500">
+            <p className="text-xs md:text-sm text-gray-400">
               Deliciousness delivered to your doorstep
             </p>
           </div>
