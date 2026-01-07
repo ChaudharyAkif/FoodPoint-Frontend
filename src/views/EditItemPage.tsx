@@ -269,7 +269,7 @@ export const EditItemPage: React.FC = () => {
                     <div className="flex flex-col">
                       <span className="font-bold text-gray-900">{opt.name}</span>
                       <span className="text-[10px] font-bold text-gray-400">
-                        £{opt.price?.toFixed(2)}
+                        ${opt.price?.toFixed(2)}
                       </span>
                     </div>
                   </div>
@@ -451,7 +451,7 @@ export const EditItemPage: React.FC = () => {
                   <div className="space-y-2">
                     <p className="text-[10px] font-black text-gray-400">Delivery Price</p>
                     <div className="flex items-center gap-2 border border-gray-300 rounded-xl p-4 bg-white">
-                      <span className="text-gray-400">£</span>
+                      <span className="text-gray-400">$</span>
                       <input
                         type="number"
                         step="0.01"
@@ -476,7 +476,7 @@ export const EditItemPage: React.FC = () => {
                         />
                       </div>
                       <div className="flex items-center gap-2 border border-gray-300 rounded-xl p-4 bg-white">
-                        <span className="text-gray-400">£</span>
+                        <span className="text-gray-400">$</span>
                         <input
                           type="number"
                           step="0.01"
@@ -657,7 +657,7 @@ export const EditItemPage: React.FC = () => {
                   >
                     <span className="font-bold text-gray-900">{v.size}</span>
                     <span className="font-bold text-gray-900">
-                      £{Number(v.deliveryPrice || 0).toFixed(2)}
+                      ${Number(v.deliveryPrice || 0).toFixed(2)}
                     </span>
                   </div>
                 ))}

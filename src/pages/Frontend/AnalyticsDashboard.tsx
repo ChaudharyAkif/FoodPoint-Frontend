@@ -114,7 +114,7 @@ const getIntensityColor = (value) => {
               </h3>
               <InfoIcon />
             </div>
-            <div className="text-3xl font-bold text-gray-900 mb-1">£862.60</div>
+            <div className="text-3xl font-bold text-gray-900 mb-1">$862.60</div>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-green-800 text-[16px] my-2  font-bold">↑ 31%</span>
               <span className="text-gray-500">vs 23/05 - 29/05</span>
@@ -129,7 +129,7 @@ const getIntensityColor = (value) => {
               </h3>
               <InfoIcon />
             </div>
-            <div className="text-3xl font-bold text-gray-900 mb-1">£22.12</div>
+            <div className="text-3xl font-bold text-gray-900 mb-1">$22.12</div>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-green-800 text-[16px] my-2 font-bold">↑ 4%</span>
               <span className="text-gray-500">vs 23/05 - 29/05</span>
@@ -314,7 +314,7 @@ const getIntensityColor = (value) => {
                 className="text-2xl font-bold text-gray-900 mb-1 my-2"
                 style={{ fontWeight: 800 }}
               >
-                £22.12
+                $22.12
               </div>
               <div className="flex items-center gap-2 mt-5">
                 <ColorCheckbox color="blue" label="Average order value" />
@@ -408,14 +408,14 @@ const getIntensityColor = (value) => {
                   <span className="text-sm text-black">
                     Total <br /> revenue
                   </span>
-                  <div className="text-2xl font-bold text-gray-900 my-5">£862.60</div>
+                  <div className="text-2xl font-bold text-gray-900 my-5">$862.60</div>
                   <ColorCheckbox color="blue" label="Revenue" />
                 </div>
                 <div>
                   <span className="text-sm text-black">
                     Total <br /> revenue loss
                   </span>
-                  <div className="text-2xl font-bold text-gray-900 my-5">£32.05</div>
+                  <div className="text-2xl font-bold text-gray-900 my-5">$32.05</div>
                   <ColorCheckbox color="orange" label="Revenue loss" />
                 </div>
               </div>
@@ -485,7 +485,7 @@ const getIntensityColor = (value) => {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-4xl font-bold text-gray-900">£862.60</span>
+                    <span className="text-4xl font-bold text-gray-900">$862.60</span>
                   </div>
                 </div>
               </div>

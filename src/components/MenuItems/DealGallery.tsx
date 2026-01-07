@@ -197,7 +197,7 @@ export const DealGallery: React.FC<DealGalleryProps> = ({ deals, onRefresh }) =>
                     <span
                       className={`text-xs font-black ${price > 0 ? 'text-gray-900' : 'text-rose-500'}`}
                     >
-                      {price > 0 ? `£${price.toFixed(2)}` : price}
+                      {price > 0 ? `$${price.toFixed(2)}` : price}
                     </span>
                   </div>
                 </div>

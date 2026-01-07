@@ -102,7 +102,7 @@ const Cashiers = () => {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center gap-3 mb-2">
-            <Users className="text-orange-500" size={32} />
+            <Users className="text-primary" size={32} />
             <h1 className="text-3xl font-bold text-gray-800">All Cashiers</h1>
           </div>
           <p className="text-gray-600">Manage your cashier accounts</p>
@@ -121,12 +121,12 @@ const Cashiers = () => {
                 placeholder="Search by name or email..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500"
+                className="w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary"
               />
             </div>
             <button
               onClick={() => navigate("/dashboard/superadmin/cashiers/add")}
-              className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl flex items-center gap-2"
+              className="px-6 py-3 bg-primary hover:bg-orange-600 text-white rounded-xl flex items-center gap-2"
             >
               <Plus size={20} />
               Add New Cashier

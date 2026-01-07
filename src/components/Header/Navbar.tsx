@@ -99,11 +99,12 @@ const Navbar: React.FC = () => {
         {/* LEFT: Logo + Links */}
         <div className="flex items-center gap-8 h-full">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="bg-orange-500 p-1.5 rounded-md">
-              <UtensilsCrossed size={20} className="text-white" />
-            </div>
-            <span className="font-semibold text-gray-800 text-sm hidden sm:block">FoodPoint</span>
+          <div className="flex items-center ">
+            {/* <div className="bg-primary p-1.5 rounded-md"> */}
+              <img src="/src/assets/logo.png" alt="Logo" className="w-12 h-10" />
+              {/* <UtensilsCrossed size={20} className="text-white" /> */}
+            {/* </div> */}
+            <span className="font-semibold text-primary text-sm hidden sm:block mt-1">FoodPoint</span>
           </div>
 
           {/* Desktop Links */}

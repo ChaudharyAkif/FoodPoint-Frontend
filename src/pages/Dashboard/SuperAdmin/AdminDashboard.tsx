@@ -63,7 +63,7 @@ const AdminDashboard = () => {
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-600 to-primary flex items-center justify-center">
               <Users className="text-white" size={24} />
             </div>
             <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
@@ -91,7 +91,7 @@ const AdminDashboard = () => {
         {/* Create Cashiers Section */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-            <Plus className="text-orange-500" size={24} />
+            <Plus className="text-primary" size={24} />
             Create New Cashiers
           </h2>
 
@@ -106,7 +106,7 @@ const AdminDashboard = () => {
             />
             <button
               onClick={handleGenerateForms}
-              className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg transition-all flex items-center gap-2 shadow-sm"
+              className="px-6 py-2 bg-gradient-to-r from-orange-600 to-primary hover:from-orange-500 hover:to-primary text-white rounded-lg transition-all flex items-center gap-2 shadow-sm"
             >
               <Plus size={18} />
               Generate Forms

@@ -181,7 +181,7 @@ export const OptionsList: React.FC = () => {
                             <p className="text-sm text-gray-400 font-bold mt-1">
                               {opt.price === undefined || opt.price === null || opt.price === 0
                                 ? 'Free'
-                                : `£${Number(opt.price).toFixed(2)}`}
+                                : `$${Number(opt.price).toFixed(2)}`}
                             </p>
 
                             {opt.linkedProductNames && opt.linkedProductNames.length > 0 && (

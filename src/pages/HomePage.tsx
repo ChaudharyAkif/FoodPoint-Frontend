@@ -272,6 +272,7 @@ const fetchData = async () => {
             onClick={() => navigate('/cart')}
             className="relative bg-linear-to-r from-red-500 to-orange-500 text-white p-3 md:p-4 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110 active:scale-95"
           >
+          
             <ShoppingCart className="w-6 h-6 md:w-7 md:h-7" />
 
             {getCartCount() > 0 && (

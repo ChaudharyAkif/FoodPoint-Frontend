@@ -207,7 +207,7 @@ const AddProductForm: React.FC = () => {
                 },
               })
             }
-            className="flex cursor-pointer items-center gap-2 bg-[#ff5a00] text-white text-xs px-8 py-3 rounded-full font-black shadow-lg hover:bg-[#e65100] active:scale-95 transition-all"
+            className="flex cursor-pointer items-center gap-2 bg-primary text-white text-xs px-8 py-3 rounded-full font-black shadow-lg hover:bg-[#e65100] active:scale-95 transition-all"
           >
             <PackagePlus size={20} /> Add Item Slot
           </button>
@@ -250,7 +250,7 @@ const AddProductForm: React.FC = () => {
                       </div>
                       <div>
                         <label className="text-[10px] font-black text-gray-400 block mb-1 tracking-widest uppercase">
-                          Base Price (£)
+                          Base Price $)
                         </label>
                         <input
                           type="number"

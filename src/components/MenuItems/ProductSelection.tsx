@@ -147,7 +147,7 @@ console.log("products",products)
                 </p>
                 <div className="relative">
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">
-                    £
+                    $
                   </div>
                   <input
                     type="number"
@@ -269,7 +269,7 @@ console.log("products",products)
 
                       <div className="flex items-center gap-3">
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                          £
+                          $
                           {(product.variations?.[0]?.deliveryPrice || product.price || 0).toFixed(
                             2
                           )}{' '}

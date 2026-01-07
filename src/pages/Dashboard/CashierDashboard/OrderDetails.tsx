@@ -155,11 +155,11 @@ const OrderDetails = () => {
                       
                       {/* Price saved in Order */}
                       <div className={`col-span-2 text-right ${staleTextColor} text-[13px]`}>
-                        £{item.price.toFixed(2)}
+                        ${item.price.toFixed(2)}
                       </div>
                       
                       <div className={`col-span-2 text-right ${staleTextColor} text-[14px] font-bold`}>
-                        £{(item.price * item.quantity).toFixed(2)}
+                        ${(item.price * item.quantity).toFixed(2)}
                       </div>
                     </div>
                 ))}
@@ -171,16 +171,16 @@ const OrderDetails = () => {
               <div className="w-full max-w-60 space-y-2">
                 <div className="flex justify-between text-[13px] text-gray-600">
                   <span>Service charges</span>
-                  <span>£{serviceCharge.toFixed(2)}</span>
+                  <span>${serviceCharge.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-[13px] text-gray-600">
                   <span>Delivery fees</span>
-                  <span>£{deliveryFee.toFixed(2)}</span>
+                  <span>${deliveryFee.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between pt-3 mt-1 border-t border-gray-200">
                   <span className={`${staleTextColor} text-[16px] font-bold`}>Total</span>
                   {/* Using the totalAmount from DB */}
-                  <span className={`${staleTextColor} text-[16px] font-black`}>£{order.totalAmount.toFixed(2)}</span>
+                  <span className={`${staleTextColor} text-[16px] font-black`}>${order.totalAmount.toFixed(2)}</span>
                 </div>
               </div>
             </div>

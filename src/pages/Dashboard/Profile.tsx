@@ -185,7 +185,7 @@ const Profile: React.FC = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-4">
               <div className="relative">
-                <div className="absolute inset-0 bg-[#f95300] rounded-2xl blur-md opacity-50"></div>
+                <div className="absolute inset-0 bg-primary rounded-2xl blur-md opacity-50"></div>
                 <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#f95300] to-[#d94700] flex items-center justify-center shadow-xl">
                   <Shield className="text-white" size={28} />
                 </div>
@@ -201,7 +201,7 @@ const Profile: React.FC = () => {
             </div>
             <button
               onClick={() => navigate('/dashboard')}
-              className="group px-6 py-3 bg-white border-2 border-gray-200 hover:border-[#f95300] text-gray-700 hover:text-[#f95300] rounded-xl transition-all flex items-center gap-2 font-semibold shadow-sm hover:shadow-md"
+              className="group px-6 py-3 bg-white border-2 border-gray-200 hover:primary text-gray-700 hover:text-[#f95300] rounded-xl transition-all flex items-center gap-2 font-semibold shadow-sm hover:shadow-md"
             >
               <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
               Back
@@ -214,7 +214,7 @@ const Profile: React.FC = () => {
       <div className="relative max-w-4xl mx-auto px-6 py-12">
         {/* User Profile Card */}
         <div className="mb-8 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#f95300] to-[#ff6a1a] px-8 py-6">
+          <div className="bg-gradient-to-r from-[#f95300] to-primary px-8 py-6">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
               <UserCircle size={24} />
               Profile Information
@@ -259,7 +259,7 @@ const Profile: React.FC = () => {
                   <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">
                     Role
                   </p>
-                  <span className="inline-flex items-center px-3 py-1 rounded-lg bg-[#f95300] text-white font-bold text-sm">
+                  <span className="inline-flex items-center px-3 py-1 rounded-lg bg-primary text-white font-bold text-sm">
                     {user?.role || 'User'}
                   </span>
                 </div>
@@ -273,7 +273,7 @@ const Profile: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
               {/* Card Header */}
-              <div className="relative bg-gradient-to-r from-[#f95300] to-[#ff6a1a] px-8 py-8">
+              <div className="relative bg-gradient-to-r from-[#f95300] to-primary px-8 py-8">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24"></div>
                 <div className="relative">
@@ -331,8 +331,8 @@ const Profile: React.FC = () => {
                   {/* Old Password */}
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-lg bg-[#f95300]/10 flex items-center justify-center">
-                        <Lock size={14} className="text-[#f95300]" />
+                      <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Lock size={14} className="text-primary" />
                       </div>
                       Current Password
                     </label>
@@ -345,13 +345,13 @@ const Profile: React.FC = () => {
                           setOldPassword(e.target.value);
                           setMessage('');
                         }}
-                        className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 pr-12 focus:outline-none focus:ring-2 focus:ring-[#f95300] focus:border-transparent transition-all bg-gray-50 focus:bg-white font-medium text-gray-700"
+                        className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 pr-12 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-50 focus:bg-white font-medium text-gray-700"
                         disabled={loading}
                       />
                       <button
                         type="button"
                         onClick={() => setShowOldPassword(!showOldPassword)}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#f95300] transition-colors"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-colors"
                       >
                         {showOldPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
@@ -362,7 +362,7 @@ const Profile: React.FC = () => {
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-[#f95300]/10 flex items-center justify-center">
-                        <Key size={14} className="text-[#f95300]" />
+                        <Key size={14} className="text-primary" />
                       </div>
                       New Password
                     </label>
@@ -375,13 +375,13 @@ const Profile: React.FC = () => {
                           setNewPassword(e.target.value);
                           setMessage('');
                         }}
-                        className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 pr-12 focus:outline-none focus:ring-2 focus:ring-[#f95300] focus:border-transparent transition-all bg-gray-50 focus:bg-white font-medium text-gray-700"
+                        className="w-full border-2 border-gray-200 rounded-xl px-5 py-4 pr-12 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-50 focus:bg-white font-medium text-gray-700"
                         disabled={loading}
                       />
                       <button
                         type="button"
                         onClick={() => setShowNewPassword(!showNewPassword)}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#f95300] transition-colors"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-colors"
                       >
                         {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
@@ -422,7 +422,7 @@ const Profile: React.FC = () => {
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-[#f95300]/10 flex items-center justify-center">
-                        <CheckCircle size={14} className="text-[#f95300]" />
+                        <CheckCircle size={14} className="text-primary" />
                       </div>
                       Confirm New Password
                     </label>
@@ -465,7 +465,7 @@ const Profile: React.FC = () => {
                     <button
                       onClick={handleSubmit}
                       disabled={loading}
-                      className={`relative w-full px-6 py-5 bg-gradient-to-r from-[#f95300] to-[#ff6a1a] hover:from-[#e04d00] hover:to-[#f95300] text-white rounded-xl transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl font-bold text-lg overflow-hidden group ${
+                      className={`relative w-full px-6 py-5 bg-gradient-to-r from-[#f95300] to-primary hover:from-[#e04d00] hover:to-[#f95300] text-white rounded-xl transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl font-bold text-lg overflow-hidden group ${
                         loading ? 'opacity-50 cursor-not-allowed' : ''
                       }`}
                     >
@@ -529,7 +529,7 @@ const Profile: React.FC = () => {
             {/* Security Tip */}
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 border-2 border-orange-200">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#f95300] flex items-center justify-center flex-shrink-0 shadow-lg">
+                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0 shadow-lg">
                   <Shield className="text-white" size={20} />
                 </div>
                 <div>
