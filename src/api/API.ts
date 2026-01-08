@@ -4,7 +4,7 @@ const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL, // Reads from .env
   headers: {
     'Content-Type': 'multipart/form-data',
-    'ngrok-skip-browser-warning': 'true', // default for file uploads
+    // 'ngrok-skip-browser-warning': 'true', // default for file uploads
   },
 });
 

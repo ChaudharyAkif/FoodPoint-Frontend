@@ -11,10 +11,11 @@ import { getToken, clearAuthData } from '../context/AuthContext';
 // });
 // src/api/axiosInstance.ts
 const axiosInstance = axios.create({
-  baseURL: 'https://friskingly-unpursued-effie.ngrok-free.dev/api',
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:2000/api",
+  // baseURL: 'https://friskingly-unpursued-effie.ngrok-free.dev/api',
   headers: {
     "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true"
+    // "ngrok-skip-browser-warning": "true"
   }
 });
 
