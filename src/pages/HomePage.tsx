@@ -35,6 +35,7 @@ import { useAuth } from '../context/useAuthContext';
 import HeroBanner from './CardDesign';
 
 import Logo from '../assets/fpt-logo.png';
+import StatsSection from '../components/Counter/LiveCounter';
 
 // Define strict interfaces to prevent TypeErrors
 interface BaseItem {
@@ -465,9 +466,9 @@ const HomePage = () => {
               </h2>
             </motion.div>
 
-            <div className="relative">
-              <div className="overflow-hidden shadow-xl md:shadow-2xl shadow-red-500/20">
-                <div className="relative h-80 md:h-125 lg:h-150">
+              <div className="relative min-h-[80vh] sm:min-h-[94vh] md:h-125 lg:h-150  ">
+              <div className="overflow-x-hidden  shadow-xl md:shadow-2xl shadow-red-500/20 h-full">
+                <div className="relative  h-[80vh] sm:h-[95vh] md:h-125 lg:h-150">
                   <AnimatePresence mode="wait">
                     {deals.map(
                       (deal, index) =>
@@ -637,61 +638,7 @@ const HomePage = () => {
       )}
 
       {/* Enhanced Features Section - Responsive */}
-      <section className="py-8 md:py-7 bg-linear-to-b from-gray-50/50 to-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            className="text-center mb-12 md:mb-16"
-          >
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 md:mb-8 leading-snug">
-              Why Choose{' '}
-              <TypeAnimation
-                sequence={[
-                  'FoodPoint', // Text to type
-                  2000, // Wait 2s
-                  '', // Optional: delete text
-                  1000, // Wait 1s before typing again
-                ]}
-                speed={50} // Typing speed
-                className="bg-gradient-to-r from-red-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent"
-                wrapper="span"
-                repeat={Infinity} // Loop the animation
-              />
-            </h2>
-            <p className="text-gray-600 text-base md:text-xl max-w-2xl mx-auto">
-              We're committed to delivering more than just food - we deliver experiences
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className={`${feature.bgColor} rounded-2xl md:rounded-3xl shadow-lg hover:shadow-xl md:hover:shadow-2xl p-6 md:p-8 transition-all duration-300 border border-gray-100/50`}
-              >
-                <div
-                  className={`w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-linear-to-br ${feature.gradient} flex items-center justify-center text-white mb-4 md:mb-6 mx-auto shadow-lg`}
-                >
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg md:text-xl font-bold text-center text-gray-900 mb-3 md:mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm md:text-base text-center leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* Enhanced Main Menu Grid Section - Responsive */}
       <section id="menu-section" className="py-12 md:py-24 bg-white">
@@ -978,6 +925,63 @@ const HomePage = () => {
         </div>
       </section>
 
+ <section className="py-8 md:py-7 bg-linear-to-b from-gray-50/50 to-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 md:mb-8 leading-snug">
+              Why Choose{' '}
+              <TypeAnimation
+                sequence={[
+                  'FoodPoint', // Text to type
+                  2000, // Wait 2s
+                  '', // Optional: delete text
+                  1000, // Wait 1s before typing again
+                ]}
+                speed={50} // Typing speed
+                className="bg-gradient-to-r from-red-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent"
+                wrapper="span"
+                repeat={Infinity} // Loop the animation
+              />
+            </h2>
+            <p className="text-gray-600 text-base md:text-xl max-w-2xl mx-auto">
+              We're committed to delivering more than just food - we deliver experiences
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className={`${feature.bgColor} rounded-2xl md:rounded-3xl shadow-lg hover:shadow-xl md:hover:shadow-2xl p-6 md:p-8 transition-all duration-300 border border-gray-100/50`}
+              >
+                <div
+                  className={`w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-linear-to-br ${feature.gradient} flex items-center justify-center text-white mb-4 md:mb-6 mx-auto shadow-lg`}
+                >
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-center text-gray-900 mb-3 md:mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm md:text-base text-center leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* Enhanced Customer Reviews Section - Responsive */}
       <section className="py-8 md:py-14 bg-linear-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
@@ -1076,47 +1080,7 @@ const HomePage = () => {
           </div>
 
           {/* Stats Banner - Responsive */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 md:mt-20 bg-linear-to-r from-red-500/10 to-orange-500/10 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 backdrop-blur-sm border border-red-200/50"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-              <div className="text-center">
-                <div className="text-2xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-1 md:mb-2">
-                  10,000+
-                </div>
-                <div className="text-gray-700 text-xs md:text-sm lg:text-base font-medium">
-                  Orders Delivered
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-1 md:mb-2">
-                  4.8/5
-                </div>
-                <div className="text-gray-700 text-xs md:text-sm lg:text-base font-medium">
-                  Customer Rating
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-1 md:mb-2">
-                  99%
-                </div>
-                <div className="text-gray-700 text-xs md:text-sm lg:text-base font-medium">
-                  On-Time Delivery
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-1 md:mb-2">
-                  50+
-                </div>
-                <div className="text-gray-700 text-xs md:text-sm lg:text-base font-medium">
-                  Partner Restaurants
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        <StatsSection  />
         </div>
       </section>
 
