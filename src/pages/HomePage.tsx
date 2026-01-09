@@ -466,7 +466,7 @@ const HomePage = () => {
               </h2>
             </motion.div>
 
-              <div className="relative min-h-[80vh] sm:min-h-[94vh] md:h-125 lg:h-150  ">
+            <div className="relative min-h-[80vh] sm:min-h-[94vh] md:h-125 lg:h-150  ">
               <div className="overflow-x-hidden  shadow-xl md:shadow-2xl shadow-red-500/20 h-full">
                 <div className="relative  h-[80vh] sm:h-[95vh] md:h-125 lg:h-150">
                   <AnimatePresence mode="wait">
@@ -638,7 +638,6 @@ const HomePage = () => {
       )}
 
       {/* Enhanced Features Section - Responsive */}
-     
 
       {/* Enhanced Main Menu Grid Section - Responsive */}
       <section id="menu-section" className="py-12 md:py-24 bg-white">
@@ -925,7 +924,7 @@ const HomePage = () => {
         </div>
       </section>
 
- <section className="py-8 md:py-7 bg-linear-to-b from-gray-50/50 to-white">
+      <section className="py-8 md:py-7 bg-linear-to-b from-gray-50/50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -981,7 +980,6 @@ const HomePage = () => {
         </div>
       </section>
 
-
       {/* Enhanced Customer Reviews Section - Responsive */}
       <section className="py-8 md:py-14 bg-linear-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
@@ -999,11 +997,16 @@ const HomePage = () => {
             </div>
             <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
               What Our{' '}
-              <span className="bg-linear-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                Customers
-              </span>{' '}
+              <TypeAnimation
+                sequence={['Customers', 2000, 'Clients', 2000, 'Users', 2000]}
+                speed={50}
+                wrapper="span"
+                repeat={Infinity}
+                className="bg-linear-to-r from-red-500 to-orange-500 bg-clip-text text-transparent"
+              />{' '}
               Say
             </h2>
+
             <p className="text-gray-600 text-base md:text-xl max-w-2xl mx-auto">
               Join thousands of satisfied customers who trust us for their daily meals
             </p>
@@ -1080,7 +1083,7 @@ const HomePage = () => {
           </div>
 
           {/* Stats Banner - Responsive */}
-        <StatsSection  />
+          <StatsSection />
         </div>
       </section>
 
